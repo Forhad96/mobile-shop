@@ -1,28 +1,31 @@
-const loadData = async (searchText = 'iphone',isShowSearch) => {
+const loadData = async (searchText = 'iphone',isShowAll) => {
   const res = await fetch(
     ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
   const data = await res.json();
   const phones = data.data;
   // console.log(phones);
-  displayData(phones,isShowSearch);
+  displayData(phones,isShowAll);
 };
 
-const displayData = (phones,isShowSearch) => {
+const displayData = (phones,isShowAll) => {
   const phonesContainer = document.getElementById("phones-container");
+  const showAll =document.getElementById('show-all')
+  // console.log(showAll);
 
   phonesContainer.innerHTML = ''
 
-  console.log(isShowSearch);
-  if(phones.length > 9){
-    phones = phones.slice(0,9);
+  if(phones.length > 15){
+    showAll.classList.remove('hidden')
   }else{
-    // search show item handler
-const showAllHandler = () =>{
-  phones = phones.slice(0)
-}
+    showAll.classList.add('hidden')
+  }
+console.log(phones.length);
+  if(!isShowAll){
+    phones = phones.slice(0,9)
   }
 
+  
   phones.forEach((phones) => {
     const phoneCard = document.createElement("div");
     phoneCard.classList = "card bg-base shadow-xl";
@@ -46,11 +49,11 @@ const showAllHandler = () =>{
 
 
 // search handler function
-const searchHandler = async(isShowSearch) =>{
+const searchHandler = async(isShowAll) =>{
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
   // console.log('button clicked',searchText);
-  loadData(searchText,isShowSearch);
+  loadData(searchText,isShowAll);
   loadingSnipper(true)
 }
 
@@ -65,7 +68,11 @@ const loadingSnipper = (isLoading) =>{
   }
 }
 
-
+      // search show item handler
+      const showAllHandler = () =>{
+        // console.log('clicekd')
+        searchHandler(true)
+      }
 
 
 loadData();
