@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GadgetBaba Shop</title>
+    <!-- TailWind css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css"
+      rel="stylesheet"
+      type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    <header class="container mx-auto">
+        <!-- navbar -->
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl">GadgetBaba Shop</a>
+        </div>
+        <div class="flex-none gap-2">
+          <div class="form-control">
+            <input
+              type="text"
+              placeholder="Search"
+              class="input input-bordered input-sm w-24 md:w-auto" />
+          </div>
+          <div class="dropdown dropdown-end">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                <img src="./profile.webp" />
+              </div>
+            </label>
+            <ul
+              tabindex="0"
+              class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+              <li>
+                <a class="justify-between">
+                  Profile
+                  <span class="badge">New</span>
+                </a>
+              </li>
+              <li><a>Settings</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- hero -->
+      <section class="flex flex-col items-center">
+        <div class="text-center mt-16 space-y-8">
+            <h1 class="text-6xl">Apple Iphone 13 Pro Max</h1>
+            <p class="text-lg font-normal text-gray-400">There are many variations of passages of Lorem Ipsum available, but the majority <br> have suffered alteration in some form, by injected humou.</p>
+            <button class="btn btn-info text-white">Buy Now</button>
+        </div>
+      <img src="./hero.png" alt="">
+
+      </section>
+
+    </header>
+    <main class="container mx-auto">
+      <!-- search field -->
+      <section class="bg-white mb-16">
+        <div class="text-center space-y-6">
+            <h1 class="text-4xl font-semibold">Search your phone</h1>
+          <input
+            id="search-field"
+            type="search"
+            placeholder="search here..."
+            class="input input-bordered w-full max-w-xs" />
+          <button onclick="searchHandler()" class="btn btn-accent">
+            Search
+          </button>
+        </div>
+      </section>
+      <!-- loading Spinner -->
+      <section>
+        <div id="loading-spinner" class="text-center ">
+          <span
+            class="loading loading-spinner text-secondary w-10 mt-60"></span>
+        </div>
+        <div
+          id="phones-container"
+          class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+      </section>
+      <!-- phones container -->
+      <section id="phones-container" class="text-center mt-10 hidden">
+        <button onclick="showAllBtn()" class="btn btn-info">Show All</button>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="./script.js"></script>
+  </body>
+</html>
